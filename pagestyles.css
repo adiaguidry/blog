@@ -3,7 +3,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #6D587A;
+    background-color: #B79CC9;
 }
 
 .container{
@@ -28,6 +28,7 @@ body {
 
 
 .left-div, .right-div {
+    z-index: 10;
     height: 100%;
     position: relative;
     padding: 0;
@@ -77,4 +78,17 @@ body {
 
 .hidden {
     display: none;
+}
+
+header {
+    background-color: #6D587A;
+}
+
+.div-nav {
+    width: 100vh;
+    height: 100vw;
+}
+.nav-stacked {
+    background-color: #6D587A;
+    height: 100%;
 }
