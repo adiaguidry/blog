@@ -29,17 +29,22 @@ body {
 
 
 .left-div, .right-div {
+    z-index: 10;
     height: 100%;
-    position: relative;
+    position: absolute;
     padding: 0;
     transition: 1s ease-in-out;
 }
 
 .left-div {
+    top: 0;
+    left: 0;
     background-color: #267368;
 }
 
 .right-div{
+    bottom: 0;
+    right: 0;
     vertical-align: middle;
     background-color: #31A595;
 }
