@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #6D587A;
+    font-family: 'Muli', sans-serif;
 }
 
 .container{
@@ -77,4 +78,7 @@ body {
 
 .hidden {
     display: none;
+}
+.blog_img{
+    width:100%;
 }

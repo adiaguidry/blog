@@ -1,5 +1,3 @@
-var app = angular.module('blogApp', []);
-
 app.controller('loginCtrl', function(){
     var login = this;
 
