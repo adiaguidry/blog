@@ -21,7 +21,7 @@ $email=$_POST['Email'];
 $profileImage=$_POST['User Profile Image'];
 $query = "INSERT INTO `Blog List`(`Title`, `Summary`, `Username`, `Recent Posts`, `File Name`, `File Size`, `File Type`, `File`, `Date Created`, `Last Edited`) VALUES ('$title','$summary','$username','$recentPosts','$fileName','$fileSize','$fileType','$file',$dateCreated,$lastEdited)";
 $query= "INSERT INTO `Login Creds`(`Username`, `Encrypted Password`, `Date Created`, `Soft Delete`) VALUES ('$username','$pass',$dateCreated, '$softDelete')";
-$query="INSERT INTO `User Profile`(`Name`, `Email`, `User Profile Image`) VALUES ('$name','$email','$')";
+$query="INSERT INTO `User Profile`(`Name`, `Email`, `User Profile Image`) VALUES ('$name','$email','$profileImage')";
 
     $create_blog=mysqli_query($conn, $query);
 
