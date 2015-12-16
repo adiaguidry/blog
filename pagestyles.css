@@ -3,8 +3,8 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #6D587A;
     font-family: 'Muli', sans-serif;
+    background-color: #B79CC9;
 }
 
 .container{
@@ -84,6 +84,21 @@ body {
 .hidden {
     display: none;
 }
-.blog_img{
-    width:100%;
+
+.blog_img {
+    width: 100%;
+}
+
+header {
+    background-color: #6D587A;
+}
+
+.div-nav {
+    width: 100vh;
+    height: 100vw;
+}
+.nav-stacked {
+    background-color: #6D587A;
+    height: 100%;
+
 }

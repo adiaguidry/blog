@@ -35,6 +35,15 @@
             <button type="button" class="btn btn-lg login-btn pull-right" data-ng-click="lc.loginTrue()">Login</button>
         </form>
 
+
+        <div class="right-div col-xs-7 pull-right">
+            <a href="#" class="sign-up">Sign Up</a>
+            <form role="form" action="POST" class="form login-form col-xs-6 pull-left">
+                <input type="email" class="email form-control" name="email" placeholder="Enter Email" required>
+                <input type="password" class="password form-control" name="password" Placeholder="Enter Password" required>
+                <button type="button" class="btn btn-lg login-btn pull-right" data-ng-click="lc.loginTrue()">Login</button>
+            </form>
+        </div>
     </div>
     <div data-ng-view>
 
