@@ -9,7 +9,7 @@ if(isset($conn)) {
         if (!isset($_SESSION['user_id']) && !isset($_SESSION['auth_token'])) {
             $output['success'] = false;
             $output['data'][] = '';
-            $output['error'] = "You are not logged in";
+            $output['errors'] = "You are not logged in";
             $error = json_encode($output);
             print($error);
         } else {
@@ -26,7 +26,7 @@ if(isset($conn)) {
             else {
                 $output['success'] = false;
                 $output['data'][] = '';
-                $output['error'] = "Failed to Logout";
+                $output['errors'] = "Failed to Logout";
                 $error = json_encode($output);
                 print($error);
             }

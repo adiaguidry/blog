@@ -46,7 +46,7 @@ if(isset($conn)) {
                     else {
                         $output['success'] = false;
                         $output['data'][] = '';
-                        $output['error'] = "Failed to Login User";
+                        $output['errors'] = "Failed to Login User";
                         $error = json_encode($output);
                         print($error);
                     }
@@ -54,7 +54,7 @@ if(isset($conn)) {
                 else {
                     $output['success'] = false;
                     $output['data'][] = '';
-                    $output['error'] = "Invalid Username or Password";
+                    $output['errors'] = "Invalid Username or Password";
                     $error = json_encode($output);
                     print($error);
                 }
@@ -62,7 +62,7 @@ if(isset($conn)) {
             else {
                 $output['success'] = false;
                 $output['data'][] = '';
-                $output['error'] = "Invalid Username or Password";
+                $output['errors'] = "Invalid Username or Password";
                 $error = json_encode($output);
                 print($error);
             }
