@@ -3,8 +3,8 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #6D587A;
     font-family: 'Muli', sans-serif;
+    background-color: #B79CC9;
 }
 
 .container{
@@ -16,24 +16,22 @@ body {
     transition: 1s ease-in-out;
 }
 
-.sign-out, .sign-up {
+.sign-up {
     position: absolute;
     top: 1%;
     right: 3%;
-    color: #00b3ee;
-}
-
-.sign-up {
     color: lightblue;
 }
 
+.title {
+    color: lightblue;
+}
 
 .left-div, .right-div {
     z-index: 10;
     height: 100%;
     position: absolute;
     padding: 0;
-    transition: 1s ease-in-out;
 }
 
 .left-div {
@@ -49,16 +47,17 @@ body {
     background-color: #31A595;
 }
 
-.left, .right{
+/*.left, .right{*/
+    /*width: 0;*/
+/*}*/
+.ng-hide {
     width: 0;
+    transition: 1s ease-in-out;
 }
+
 
 .email, .password {
     background-color: lightblue;
-}
-
-::-webkit-input-placeholder {
-    color: #267368;
 }
 
 .login-logo {
@@ -84,6 +83,44 @@ body {
 .hidden {
     display: none;
 }
-.blog_img{
-    width:100%;
+
+.blog_img {
+    width: 100%;
+}
+
+.header {
+    background-color: #6D587A;
+    height:10%;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-stacked {
+    position: absolute;
+    background-color: #6D587A;
+    height: 90%;
+    text-align: center;
+}
+
+.nav-stacked, .container-fluid, .collapse {
+    padding: 0;
+}
+.side-nav li a {
+    width: 100%;
+    color: lightblue;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.side-nav li a:hover {
+    background-color: #B79CC9;
+}
+
+.view {
+    width: 90%;
+    height: 80%;
+}
+
+.tab-view  {
+    height: 30%;
 }
