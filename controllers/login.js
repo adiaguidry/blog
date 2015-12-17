@@ -1,6 +1,6 @@
 app.controller('loginCtrl', function(loginData, $q){
     var login = this;
-    var deferred = $q.defer();
+
 
     login.signOut = function() {
         $('.left-div').removeClass('left');
@@ -9,14 +9,15 @@ app.controller('loginCtrl', function(loginData, $q){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    loginData.callData().then(function() {
-        deferred.resolve(
-        $('.left-div').addClass('left');
-        $('.right-div').addClass('right');
-        $('.login-form, .sign-up').addClass('hidden');
-        )}, function(response){
-        deferred.reject(response);
-    })
+    login.userLogin = function() {
+        loginData.callData().then(function() {
+            $('.left-div').addClass('left');
+            $('.right-div').addClass('right');
+            $('.login-form, .sign-up').addClass('hidden');
+        }, function(response){
+
+     })
+    };
 });
 
 app.factory("loginData", function($http){

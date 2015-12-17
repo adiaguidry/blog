@@ -34,6 +34,7 @@ body {
     height: 100%;
     position: absolute;
     padding: 0;
+    transition: 1s ease-in-out;
 }
 
 .left-div {
@@ -51,12 +52,13 @@ body {
 
 .left, .right{
     width: 0;
+    transition: 1s ease-in-out;
 }
 
 /*.box.ng-hide-add {*/
     /*width: 0;*/
     /*animation: 1s ease-in-out hide;*/
-    /*/!*transition: 1s ease-in-out hide;*!/*/
+
 /*}*/
 
 /*.box.ng-hide-remove {*/
