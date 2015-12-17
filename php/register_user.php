@@ -73,7 +73,7 @@ header('Access-Control-Allow-Methods: GET, POST');
         }
         else {
             $output['success'] = false;
-            $output['errors'] = "No Post Variables Set";
+            $output['errors'] = "Please Fill out all forms and try again";
             $error = json_encode($output);
             print($error);
         }
