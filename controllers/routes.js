@@ -50,14 +50,15 @@ app.controller('profileCtrl', function($http, $log){
    var pro = this;
     pro.edit = true;
     $http({
-        url: 'http://s-apis.learningfuze.com/blog/profile.json',
+        url: 'php/get_profile.php',
         header: {'Content-Type': 'application/x-www-form-urlencoded'},
-        method: 'POST'
+        method: 'POST',
+        data:{uid:5}
     }).success(function(response){
         $log.info('success for profile; ', response);
         pro.info = response.data;
     }).error(function(){
-        $log.error('error');
+        $log.error('error' + response);
     });
 
 });
