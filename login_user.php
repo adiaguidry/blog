@@ -24,6 +24,21 @@ if(isset($conn)) {
                     $id = $results['id'];
                 }
                 if (password_verify($password, $hash)) {
+                    $auth = bin2hex(openssl_random_pseudo_bytes(16));
+                    $create_session_query = "INSERT INTO `session`(`auth_token`,`login_time`,`IP_Address`,`User_ID`) VALUES('$auth',UNIX_TIMESTAMP(),'{$_SERVER['REMOTE_ADDR']}','$id')";
+                    $create_session = mysqli_query($conn,$create_session_query);
+                    if(mysqli_affected_rows($conn)>0){
+                        $_SESSION['user_id'] = $id;
+                        $_SESSION['auth_token'] = $auth;
+                    }
+                    else{
+                        $output['success'] = false;
+                        $output['data'][] = '';
+                        $output['errors'] = "Failed to Create Session";
+                        $error = json_encode($output);
+                        print($error);
+                        die();
+                    }
                     $login_query = "UPDATE `login creds` AS `lc` SET `last login` = UNIX_TIMESTAMP(), `is logged in` = '1' WHERE '$id'= lc.ID";
                     $log_in = mysqli_query($conn, $login_query);
                     if (mysqli_affected_rows($conn) > 0) {
@@ -35,9 +50,6 @@ if(isset($conn)) {
                                 $output['data']['username'] = $info['username'];
                                 $output['data']['uid'] = $id;
                             }
-                            $auth = bin2hex(openssl_random_pseudo_bytes(16));
-                            $_SESSION['user_id'] = $id;
-                            $_SESSION['auth_token'] = $auth;
                             $output['data']['auth_token'] = $auth;
                             $success = json_encode($output);
                             print($success);
