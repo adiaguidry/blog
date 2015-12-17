@@ -15,12 +15,14 @@ if(isset($conn)) {
                 $get_info = mysqli_query($conn,$get_info_query);
                 if(mysqli_num_rows($get_info) > 0){
                     while($results = mysqli_fetch_assoc($get_info)){
+                        $output['success'] = true;
                         $blog_id[]=$results['blog_id'];
-                        $output['data']['username'] = $results['username'];
+                        $output['data']['uid'] = $results['ID'];
+                        $output['data']['name'] = $results['username'];
                         $output['data']['email'] = $results['email'];
-                        $output['data']['last login'] = date("Y-m-d\ T H:i:s ", $results['last login']);
-                        $output['data']['is logged in'] = $results['is logged in'];
-                        $output['data']['recent posts'] = $blog_id;
+                        $output['data']['last_login'] = date("Y-m-d\ T H:i:s ", $results['last login']);
+                        $output['data']['is_logged_in'] = $results['is logged in'];
+                        $output['data']['recent_posts'] = $blog_id;
                     }
                     print(json_encode($output));
                 }
