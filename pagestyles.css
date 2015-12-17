@@ -5,6 +5,7 @@ body {
     padding: 0;
     font-family: 'Muli', sans-serif;
     background-color: #B79CC9;
+    overflow: hidden;
 }
 
 .container{
@@ -23,6 +24,12 @@ body {
     color: lightblue;
     border: none;
     background-color: #31A595;
+}
+
+.sign-out {
+    color: lightblue;
+    border: none;
+    background-color: #6D587A;
 }
 
 .title {
@@ -122,14 +129,14 @@ body {
 .nav-stacked, .container-fluid, .collapse {
     padding: 0;
 }
-.side-nav li a {
+.side-nav li a, .side-nav li button {
     width: 100%;
     color: lightblue;
     font-size: 1.2em;
     font-weight: 700;
 }
 
-.side-nav li a:hover {
+.side-nav li a:hover, .side-nav li button:hover {
     background-color: #B79CC9;
 }
 
@@ -175,10 +182,6 @@ body {
     z-index: 2;
     background-color: #267368;
     color: lightblue;
-}
-
-.modal-content input, .modal-content button {
-    background-color: lightblue;
 }
 
 .modal-content button {
