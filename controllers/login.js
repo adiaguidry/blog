@@ -18,8 +18,8 @@ app.controller('loginCtrl', function(loginData, $log){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    login.userLogin = function(em, pass) {
-        loginData.callData(em, pass).then(function(response) {
+    login.userLogin = function(userEmail, userPassword, $log) {
+        loginData.callData(userEmail, userPassword).then(function(response) {
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
@@ -30,7 +30,7 @@ app.controller('loginCtrl', function(loginData, $log){
                 $log.info(response)
             }
             else{
-                alert('Incorrect username or password');
+                alert(response.data.errors);
             }
         //}, function(response){
         //    alert('Incorrect username or password');

@@ -7,10 +7,10 @@ require_once('email_regex_check.php');
 require_once('auth_check.php');
 session_start();
 if(isset($conn)) {
-    if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['uid']) && isset($_POST['password'])){
+    if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])){
         if (isset($_SESSION['auth_token']) && isset($_SESSION['user_id'])) {
             if (auth_check($conn)) {
-                $uid = sanitize_data($_POST['uid']);
+                $uid = $_SESSION['user_id'];
                 $new_username = sanitize_data($_POST['username']);
                 $new_password = sanitize_data($_POST['password']);
                 $encrypted_password = password_hash($new_password, PASSWORD_BCRYPT);
@@ -42,7 +42,7 @@ if(isset($conn)) {
                             $output['data']['uid'] = $results['ID'];
                             $output['data']['username'] = $results['Username'];
                             $output['data']['email'] = $results['Email'];
-                            $output['data']['Last Login'] = $results['Last Login'];
+                            $output['data']['Last Login'] = date("Y-m-d\ T H:i:s ", $results['Last Login']);
                             if ($results['is logged in']) {
                                 $output['data']['Is Logged In'] = true;
                             } else {

@@ -78,4 +78,6 @@ app.factory("getData", function($http){
     return service;
 });
 
+app.controller("logoutCtrl", function(){});
+
 
