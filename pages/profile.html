@@ -1,10 +1,11 @@
-<div data-ng-controller="profileCtrl as pc" class="row">
+<div data-ng-controller="profileCtrl as pc">
+    <div class="container profile-container">
     <div class="col-md-offset-2 col-md-4">
         <div>
-            <img width="350px" class="profile_img" src="images/propic.jpg">
+            <img width="350px" class="profile_img pull-right" src="images/propic.jpg">
         </div>
     </div>
-            <div class="col-md-6 profile_img">
+            <div class="col-md-6 profile_data">
 
                 <div class="form-group col-lg-6">
                     <h2>My Profile</h2>
@@ -13,11 +14,12 @@
                     <input data-ng-hide="pc.edit" type="text" name="email" class="form-control" id="" value="">
                     <h2>I <i class="fa fa-heart-o"></i> Blog Tree</h2>
                     <h2>My Blogs: 55</h2>
-                    <button data-ng-click="pc.edit =!pc.edit" class="btn btn-sm glyphicon glyphicon-pencil"></button>
+                    <button data-ng-click="pc.edit =!pc.edit" class="btn btn-sm glyphicon glyphicon-pencil create"></button>
 
-                    <button data-ng-show="!pc.edit" class="btn btn-sm">submit</button>
+                    <button data-ng-show="!pc.edit" class="btn btn-sm create">submit</button>
                 </div>
 
 
             </div>
     </div>
+</div>
