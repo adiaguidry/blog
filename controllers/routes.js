@@ -36,6 +36,13 @@ app.controller('blogCtrl', function(getData, $log){
         });
 });
 app.controller('createCtrl', function($http, $log){
+    var blog = this;
+    blog.creatBlog = function(){
+        var enrty = $.param({
+            title: 'title',
+            summary: 'summary'
+        });
+    };
     $http({
         url: 'http://s-apis.learningfuze.com/blog/create.json',
         header: {'Content-Type': 'application/x-www-form-urlencoded'},
