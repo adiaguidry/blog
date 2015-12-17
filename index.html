@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav side-nav">
-                        <li><a href="#blog" data-ng-click="showing = !showing">Home</a></li>
+                        <li><a href="#blog">Home</a></li>
                         <li><a href="#profile">Profile</a></li>
                         <li><a href="#create">Create</a></li>
                         <li><button class="sign-out" data-ng-click="lc.signOut()">Sign Out</button></li>
@@ -49,14 +49,14 @@
     <div class="right-div col-xs-7 pull-right">
         <button type="button" class="sign-up" data-toggle="modal" data-target="#registerModal">Sign Up</button>
 
-        <form role="form" method="POST" action="" class="form login-form col-xs-6 pull-left">
+        <form role="form" method="POST" action="php/login_user.php" class="form login-form col-xs-6 pull-left">
             <input type="text" class="email form-control" name="email" placeholder="Enter Email" data-ng-model="email"
                    pattern="^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$"
                    title="Please enter a valid email">
             <input type="password" class="password form-control" name="password" Placeholder="Enter Password"
-                   data-ng-model="password" pattern="^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]{8,20}$"
+                   data-ng-model="password" pattern="^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]{3,20}$"
                    title="Password must be between 8 and 20 characters">
-            <button type="button" class="btn btn-lg login-btn pull-right" data-ng-click="lc.test()">Login</button>
+            <button type="submit" class="btn btn-lg login-btn pull-right" data-ng-click="lc.userLogin(email,password)">Login</button>
                                                         <!-- php/login_user.php   lc.userLogin(email,password)  -->
         </form>
     </div>

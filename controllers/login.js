@@ -18,7 +18,7 @@ app.controller('loginCtrl', function(loginData, $log){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    login.userLogin = function(em, pass) {
+    login.userLogin = function(em, pass, $log) {
         loginData.callData(em, pass).then(function(response) {
             if(response.data.success) {
                 $('.left-div').addClass('left');
