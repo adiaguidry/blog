@@ -9,23 +9,25 @@ app.controller('loginCtrl', function(loginData, $log){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    login.userLogin = function() {
-        loginData.callData().then(function(response) {
+    login.userLogin = function(em, pass) {
+        loginData.callData(em, pass).then(function(response) {
             $('.left-div').addClass('left');
             $('.right-div').addClass('right');
             $('.login-form, .sign-up').addClass('hidden');
             $log.info(response)
         }, function(response){
-            alert('error: ' + response);
+            alert('Incorrect username or password');
      })
     };
 });
 
-app.factory("loginData", function($http){
+app.factory("loginData", function($http, $log){
     var loginService = {};
 
     loginService.callData = function(em, pass){
+
         var userData = $.param({email: em, password: pass});
+        $log.info(em,pass);
         return $http({
             url: "login_user.php",
             method: 'POST',
