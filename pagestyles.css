@@ -132,6 +132,13 @@ body {
     width: 100%;
 }
 
+.profile-container {
+    margin-top: 10vh;
+    height: 80vh;
+    background-color: #6D587A;
+    border-radius: 15px;
+}
+
 .profile_img {
     border-radius: 100%;
     margin: 15% 0;
