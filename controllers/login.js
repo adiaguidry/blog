@@ -5,13 +5,13 @@ app.controller('loginCtrl', function(loginData){
 
     //};
     //
-    //login.signOut = function() {
-    //    //$('.left-div').removeClass('left');
-    //    //$('.right-div').removeClass('right');
-    //    //setTimeout(function(){
-    //    //    $('.login-form, .sign-up').removeClass('hidden');
-    //    //},500);
-    //};
+    login.signOut = function() {
+        $('.left-div').removeClass('left');
+        $('.right-div').removeClass('right');
+        setTimeout(function(){
+            $('.login-form, .sign-up').removeClass('hidden');
+        },500);
+    };
     loginData.callData().then(function(response) {
         $('.left-div').addClass('left');
         $('.right-div').addClass('right');
