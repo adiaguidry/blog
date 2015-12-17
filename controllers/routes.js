@@ -35,12 +35,30 @@ app.controller('blogCtrl', function(getData, $log){
             $log.info(response);
         });
 });
-app.controller('createCtrl', function(){
-
+app.controller('createCtrl', function($http, $log){
+    $http({
+        url: 'http://s-apis.learningfuze.com/blog/create.json',
+        header: {'Content-Type': 'application/x-www-form-urlencoded'},
+        method: 'POST'
+    }).success(function(response){
+        $log.info('success in create: ', response);
+    }).error(function(){
+        $log.error('error');
+    })
 });
-app.controller('profileCtrl', function(){
+app.controller('profileCtrl', function($http, $log){
    var pro = this;
     pro.edit = true;
+    $http({
+        url: 'http://s-apis.learningfuze.com/blog/profile.json',
+        header: {'Content-Type': 'application/x-www-form-urlencoded'},
+        method: 'POST'
+    }).success(function(response){
+        $log.info('success for profile; ', response);
+        pro.info = response.data;
+    }).error(function(){
+        $log.error('error');
+    });
 
 });
 app.factory("getData", function($http){
