@@ -47,10 +47,12 @@
 
     <div class="right-div col-xs-7 pull-right">
         <button type="button" class="sign-up" data-toggle="modal" data-target="#squarespaceModal">Sign Up</button>
-        <form role="form" method="POST" action="" class="form login-form col-xs-6 pull-left">
-            <input type="text" class="email form-control" name="email" placeholder="Enter Email" data-ng-model="'userEmail">
-            <input type="password" class="password form-control" name="password" Placeholder="Enter Password" data-ng-model="userPassword">
-            <button type="submit" class="btn btn-lg login-btn pull-right" data-ng-click="lc.userLogin(userEmail,userPassword)">Login</button>
+
+        <form role="form" method="POST" action="php/login_user.php" class="form login-form col-xs-6 pull-left">
+            <input type="text" class="email form-control" name="email" placeholder="Enter Email" data-ng-model="email">
+            <input type="password" class="password form-control" name="password" Placeholder="Enter Password" data-ng-model="password">
+            <button type="button" class="btn btn-lg login-btn pull-right" data-ng-click="lc.userLogin(email,password)">Login</button>
+
         </form>
     </div>
     <div class="view" data-ng-view>
