@@ -88,6 +88,11 @@ body {
     width: 100%;
 }
 
+.profile_img {
+    border-radius: 100%;
+    margin: 5% 0;
+}
+
 .header {
     background-color: #6D587A;
     height:10%;
@@ -123,4 +128,8 @@ body {
 
 .tab-view  {
     height: 30%;
+}
+
+.create_text button{
+    margin: 1%;
 }
