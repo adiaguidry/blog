@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div data-ng-controller="profileCtrl as pc" class="row">
+    <div class="col-md-offset-2 col-md-4">
+        <div>
+            <img width="350px" class="profile_img" src="images/propic.jpg">
+        </div>
+    </div>
+            <div class="col-md-6 profile_img">
 
-</body>
-</html>
+                <div class="form-group col-lg-6">
+                    <h2>My Profile</h2>
+                    <input data-ng-hide="pc.edit" type="text" name="username" class="form-control" id="" value="">
+                    <h2>myprofile@gmail.com</h2>
+                    <input data-ng-hide="pc.edit" type="text" name="email" class="form-control" id="" value="">
+                    <h2>I <i class="fa fa-heart-o"></i> Blog Tree</h2>
+                    <h2>My Blogs: 55</h2>
+                    <button data-ng-click="pc.edit =!pc.edit" class="btn btn-sm glyphicon glyphicon-pencil"></button>
+
+                    <button data-ng-show="!pc.edit" class="btn btn-sm">submit</button>
+                </div>
+
+
+            </div>
+    </div>

@@ -6,6 +6,14 @@ app.controller('routeCtrl', function($routeProvider){
         .when('/',{
             templateUrl: 'pages/blog.html',
             controller: 'blogCtrl'
+        })
+        .when('/profile',{
+            templateUrl: 'pages/profile.html',
+            controller: 'profileCtrl'
+        })
+        .when('/create',{
+            templateUrl: 'pages/create.html',
+            controller: 'createCtrl'
         });
 });
 
@@ -19,10 +27,15 @@ app.controller('blogCtrl', function(getData, $log){
         }, function(response){
             $log.info(response);
         });
-
+});
+app.controller('createCtrl', function(){
 
 });
+app.controller('profileCtrl', function(){
+   var pro = this;
+    pro.edit = true;
 
+});
 app.factory("getData", function($http){
     var service = {};
     var url = "http://s-apis.learningfuze.com/blog/list.json";
