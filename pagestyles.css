@@ -49,20 +49,21 @@ body {
     background-color: #31A595;
 }
 
-/*.left, .right{*/
-    /*width: 0;*/
-/*}*/
-.box.ng-hide-add {
+.left, .right{
     width: 0;
-    animation: 1s ease-in-out hide;
-    /*transition: 1s ease-in-out hide;*/
 }
 
-.box.ng-hide-remove {
-    width: 100%;
-    /*animation: 1s ease-in-out show;*/
-    transition: 1s ease-in-out show;
-}
+/*.box.ng-hide-add {*/
+    /*width: 0;*/
+    /*animation: 1s ease-in-out hide;*/
+    /*/!*transition: 1s ease-in-out hide;*!/*/
+/*}*/
+
+/*.box.ng-hide-remove {*/
+    /*width: 100%;*/
+    /*/!*animation: 1s ease-in-out show;*!/*/
+    /*transition: 1s ease-in-out show;*/
+/*}*/
 
 
 .email, .password {
@@ -139,8 +140,9 @@ body {
     height: 30%;
 }
 
-.create_text button{
+.create_text button {
     margin: 1%;
+}
 
 /* modal css */
 .center {
