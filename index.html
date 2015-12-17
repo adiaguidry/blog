@@ -22,7 +22,7 @@
 <div class="container-fluid container-main" data-ng-controller="loginCtrl as lc">
 
 
-    <div class="divnav">
+    <div class="divnav" data-ng-controller="logoutCtrl as lg">
 
         <nav class="nav nav-pills nav-stacked col-xs-1">
             <img src="images/tree-logo.png" alt="tree logo" class="login-logo small">
@@ -33,7 +33,7 @@
                         <li><a href="#blog">Home</a></li>
                         <li><a href="#profile">Profile</a></li>
                         <li><a href="#create">Create</a></li>
-                        <li><button class="sign-out" data-ng-click="lc.signOut()">Sign Out</button></li>
+                        <li><button type="button" class="sign-out" data-ng-click="lg.signOut()">Sign Out</button></li>
 
                     </ul>
                 </div>
