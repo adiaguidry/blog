@@ -13,4 +13,6 @@ app.controller('loginCtrl', function(){
     //    //    $('.login-form, .sign-up').removeClass('hidden');
     //    //},500);
     //};
+    //login.right-box = true;
+    //login.left-box = true;
 });
