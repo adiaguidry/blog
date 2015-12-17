@@ -3,7 +3,7 @@ app.controller('routeCtrl', function($routeProvider){
 })
 .config(function($routeProvider){
     $routeProvider
-        .when('/',{
+        .when('/blog',{
             templateUrl: 'pages/blog.html',
             controller: 'blogCtrl'
         })
@@ -15,6 +15,10 @@ app.controller('routeCtrl', function($routeProvider){
             templateUrl: 'pages/create.html',
             controller: 'createCtrl'
         });
+    //    .when('/',{
+    //        templateUrl: 'pages/lander.html'
+    //    }
+    //);
 });
 
 app.controller('blogCtrl', function(getData, $log){
