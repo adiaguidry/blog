@@ -3,7 +3,7 @@ require('connect.php');
 //Variables for Blog List Table
 $title=$_POST['Title'];
 $summary=$_POST['Summary'];
-$username=$_POST['Username'];
+$username=$_POST['user_ID'];
 $recentPosts=$_POST['Recent Posts'];
 $fileName=$_POST['File Name'];
 $fileSize=$_POST['File Size'];
@@ -18,10 +18,12 @@ $softDelete=$_POST['Soft Delete'];
 //Variables for User Profile
 $name=$_POST['name'];
 $email=$_POST['Email'];
+$lastLogin=$_POST['Last Login'];
+$isLoggedIn=$_POST['is logged in'];
 $profileImage=$_POST['User Profile Image'];
-$query = "INSERT INTO `Blog List`(`Title`, `Summary`, `Username`, `Recent Posts`, `File Name`, `File Size`, `File Type`, `File`, `Date Created`, `Last Edited`) VALUES ('$title','$summary','$username','$recentPosts','$fileName','$fileSize','$fileType','$file',$dateCreated,$lastEdited)";
-$query= "INSERT INTO `Login Creds`(`Username`, `Encrypted Password`, `Date Created`, `Soft Delete`) VALUES ('$username','$pass',$dateCreated, '$softDelete')";
-$query="INSERT INTO `User Profile`(`Name`, `Email`, `User Profile Image`) VALUES ('$name','$email','$profileImage')";
+$query = "INSERT INTO `Blog List`(`Title`, `Summary`,`user_ID`,`Date Created`, `Last Edited`) VALUES ('$title','$summary','$username','$dateCreated','$lastEdited')";
+$query= "INSERT INTO `Login Creds`(`Username`, `Encrypted Password`, `Email`, `Date Created`, `Soft Delete`, `Last Login`, `is logged in`) VALUES ('$username','$pass','$email', '$dateCreated','$softDelete','$lastLogin','$isLoggedIn')";
+$query="INSERT INTO `User Profile`(`User_ID`, `Name`, `Email`, `User Profile Image`, `File Name`, `File Type`, `Recent Posts`) VALUES ('$username','$name','$email','$profileImage','$fileName','$fileType','$recentPosts')";
 
     $create_blog=mysqli_query($conn, $query);
 
