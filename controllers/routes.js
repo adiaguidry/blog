@@ -19,11 +19,14 @@ app.controller('routeCtrl', function($routeProvider){
 
 app.controller('blogCtrl', function(getData, $log){
     var blog = this;
+    blog.array =[{title: 'Apples', summary: "Lorem Ipsum is simply dummy of the printing and typesetting text of is simply dummy text of the printing and typesetting industry."},
+        {title: 'Oranges', summary: "Lorem Ipsum is simply dummy of the printing and typesetting text of is simply dummy text of the printing and typesetting industry."},
+        {title: 'Bananas', summary: "Lorem Ipsum is simply dummy of the printing and typesetting text of is simply dummy text of the printing and typesetting industry."},];
     blog.info ={};
     getData.callData()
         .then(function(response){
             blog.info = response.data.data;
-            $log.info(blog.info);
+            blog.array.push(blog.info);
         }, function(response){
             $log.info(response);
         });
