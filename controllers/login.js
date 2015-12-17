@@ -30,7 +30,7 @@ app.controller('loginCtrl', function(loginData, $log){
                 $log.info(response)
             }
             else{
-                alert('Incorrect username or password');
+                alert(response.data.errors);
             }
         //}, function(response){
         //    alert('Incorrect username or password');
