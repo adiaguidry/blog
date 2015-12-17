@@ -4,8 +4,10 @@ app.controller('loginCtrl', function(loginData, $log){
     login.test = function() {
         $('.left-div').addClass('left');
         $('.right-div').addClass('right');
-        $('.login-form, .sign-up').addClass('hidden');
         $('.move, .under-tree').addClass('right-transition');
+        setTimeout(function(){
+            $('.login-form, .sign-up').addClass('hidden');
+        },650);
     };
 
     login.signOut = function() {
@@ -21,7 +23,10 @@ app.controller('loginCtrl', function(loginData, $log){
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
-                $('.login-form, .sign-up').addClass('hidden');
+                $('.move, .under-tree').addClass('right-transition');
+                setTimeout(function(){
+                    $('.login-form, .sign-up').addClass('hidden');
+                },650);
                 $log.info(response)
             }
             else{
@@ -62,8 +67,10 @@ app.controller("modalCtrl", function(registerData, $log){
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
-                $('.login-form, .sign-up').addClass('hidden');
-
+                $('.move, .under-tree').addClass('right-transition');
+                setTimeout(function(){
+                    $('.login-form, .sign-up').addClass('hidden');
+                 },650);
                 $log.info(response)
             }
             else{
