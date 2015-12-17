@@ -12,7 +12,7 @@ app.controller('loginCtrl', function(loginData){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    loginData.callData().then(function(response) {
+    loginData.callData().then(function() {
         $('.left-div').addClass('left');
         $('.right-div').addClass('right');
         $('.login-form, .sign-up').addClass('hidden');
