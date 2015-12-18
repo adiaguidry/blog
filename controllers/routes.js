@@ -38,16 +38,16 @@ app.controller('createCtrl', function($http, $log){
 
     create.createBlog = function(blogTitle, blogArea, blogTags){
         var blogData = $.param({title: blogTitle, text: blogArea, tags: blogTags, public: true});
-        $http({
+        return $http({
             url: 'php/create_blog.php',
-            header: {'Content-Type': 'application/x-www-form-urlencoded'},
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             method: 'POST',
             data: blogData
-        }).success(function(response){
+        }).then(function(response){
             $log.info('success in create: ', response);
-        }).error(function(){
+        }, function(){
             $log.error('error');
-        })
+        });
     };
 });
 app.controller('profileCtrl', function($http, $log){
@@ -55,7 +55,7 @@ app.controller('profileCtrl', function($http, $log){
     pro.edit = true;
     $http({
         url: 'http://s-apis.learningfuze.com/blog/profile.json',
-        header: {'Content-Type': 'application/x-www-form-urlencoded'},
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         method: 'POST'
     }).success(function(response){
         $log.info('success for profile; ', response);
