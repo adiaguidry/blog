@@ -1,6 +1,5 @@
 app.controller('loginCtrl', function(loginData){
     var login = this;
-
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');
