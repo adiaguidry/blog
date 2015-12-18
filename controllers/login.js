@@ -1,20 +1,25 @@
-app.controller('loginCtrl', function(loginData){
+app.controller('loginCtrl', function($scope, loginData){
     var login = this;
-
+    $scope.credentials = {
+        username: '',
+        password: ''
+    };
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');
         $('.move, .under-tree').removeClass('right-transition');
+        loginData.clearInput();
         setTimeout(function(){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    login.userLogin = function(userEmail, userPassword) {
-        loginData.callData(userEmail, userPassword).then(function(response) {
+    login.userLogin = function(credentials) {
+        loginData.callData(credentials).then(function(response) {
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
                 $('.move, .under-tree').addClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').addClass('hidden');
                 },650);
@@ -22,17 +27,17 @@ app.controller('loginCtrl', function(loginData){
             else{
                 alert(response.data.errors);
             }
-        //}, function(response){
-        //    alert('Incorrect username or password');
      })
     };
-    login.clearInput = function() {
-        $('.login-form, .modal-form')[0].reset();
-    };
+
 });
 
 app.factory("loginData", function($http){
     var loginService = {};
+
+    loginService.clearInput = function() {
+        $('.login-form, .modal-form')[0].reset();
+    };
 
     loginService.callData = function(userEmail, userPassword){
 
@@ -51,15 +56,16 @@ app.factory("loginData", function($http){
     return loginService;
 });
 
-app.controller("modalCtrl", function(registerData) {
+app.controller("modalCtrl", function(registerData, loginData) {
     var modal = this;
 
-    modal.userRegister = function(regName, regEmail,regPass, regPic, $log){
-        registerData.regData(regName, regEmail,regPass, regPic).then(function(response){
+    modal.userRegister = function(reg){
+        registerData.regData(reg).then(function(response){
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
                 $('.move, .under-tree').addClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').addClass('hidden');
                  },650);
@@ -90,7 +96,7 @@ app.service("registerData", function($http,$log){
     return reg;
 });
 
-app.controller("logoutCtrl", function($http){
+app.controller("logoutCtrl", function($http, loginData){
     var logout = this;
 
     logout.signOut = function() {
@@ -106,6 +112,7 @@ app.controller("logoutCtrl", function($http){
                 $('.left-div').removeClass('left');
                 $('.right-div').removeClass('right');
                 $('.move, .under-tree').removeClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').removeClass('hidden');
                 },500);
