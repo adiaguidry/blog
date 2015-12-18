@@ -26,6 +26,9 @@ app.controller('loginCtrl', function(loginData){
         //    alert('Incorrect username or password');
      })
     };
+    login.clearInput = function() {
+        $('.login-form, .modal-form')[0].reset();
+    };
 });
 
 app.factory("loginData", function($http){
@@ -60,11 +63,9 @@ app.controller("modalCtrl", function(registerData) {
                 setTimeout(function(){
                     $('.login-form, .sign-up').addClass('hidden');
                  },650);
-                $log.info(response);
             }
             else{
                 alert('Error: ' + response.data.errors);
-                $log.info(response.data.errors);
             }
         })
     };
@@ -75,7 +76,7 @@ app.service("registerData", function($http,$log){
 
     reg.regData = function(regName, regEmail, regPass, regPic){
         var userRegData = $.param({display_name: regName, email: regEmail, password: regPass, profilePicture: regPic});
-        $log.info(regName, regEmail, regPass, regPic);
+        //$log.info(regName, regEmail, regPass, regPic);
 
         return $http({
             url: "php/register_user.php",
@@ -89,7 +90,7 @@ app.service("registerData", function($http,$log){
     return reg;
 });
 
-app.controller("logoutCtrl", function($http, $log){
+app.controller("logoutCtrl", function($http){
     var logout = this;
 
     logout.signOut = function() {
@@ -108,11 +109,9 @@ app.controller("logoutCtrl", function($http, $log){
                 setTimeout(function(){
                     $('.login-form, .sign-up').removeClass('hidden');
                 },500);
-                $log.info('hello' + response);
             }
             else{
                 alert('Error: ' + response.data.errors);
-                $log.info('bad' + response);
             }
         })
     };
