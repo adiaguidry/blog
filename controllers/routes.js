@@ -15,10 +15,6 @@ app.controller('routeCtrl', function($routeProvider){
             templateUrl: 'pages/create.html',
             controller: 'createCtrl'
         });
-    //    .when('/',{
-    //        templateUrl: 'pages/lander.html'
-    //    }
-    //);
 });
 
 app.controller('blogCtrl', function(getData, $log){
@@ -76,7 +72,4 @@ app.factory("getData", function($http){
 
     return service;
 });
-
-app.controller("logoutCtrl", function(){});
-
 
