@@ -41,7 +41,7 @@ app.factory("loginData", function($http){
 
     loginService.callData = function(credentials){
 
-        var userData = $.param({credentials});
+        //var userData = $.param({credentials});
 
         return $http({
             url: "php/login_user.php",
@@ -49,7 +49,7 @@ app.factory("loginData", function($http){
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: userData
+            data: credentials
         });
     };
 
