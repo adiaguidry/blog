@@ -1,6 +1,15 @@
 app.controller('loginCtrl', function(loginData){
     var login = this;
 
+    login.test = function() {
+        $('.left-div').addClass('left');
+        $('.right-div').addClass('right');
+        $('.move, .under-tree').addClass('right-transition');
+        setTimeout(function(){
+            $('.login-form, .sign-up').addClass('hidden');
+        },650);
+    };
+
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');

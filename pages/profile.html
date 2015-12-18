@@ -3,16 +3,16 @@
     <div class="col-md-offset-2 col-md-4">
         <div>
             <!-- this code can be put into the src after hooked into the database{{ pc.info.profile_img }}-->
-            <img width="350px" class="profile_img pull-right" src="images/propic.jpg">
+            <img class="profile_img pull-right" src="images/propic.jpg">
         </div>
     </div>
             <div class="col-md-6 profile_data">
 
                 <div class="form-group col-lg-6">
                     <h2>{{ pc.info.name }}</h2>
-                    <input data-ng-hide="pc.edit" type="text" name="username" class="form-control" id="" value="">
+                    <input data-ng-hide="pc.edit" type="text" name="username" class="form-control">
                     <h2>{{ pc.info.email }}</h2>
-                    <input data-ng-hide="pc.edit" type="text" name="email" class="form-control" id="" value="">
+                    <input data-ng-hide="pc.edit" type="text" name="email" class="form-control">
                     <h2>I <i class="fa fa-heart-o"></i> Blog Tree</h2>
                     <h2>My Blogs: {{ pc.info.recent_posts.length }}</h2>
                     <button data-ng-click="pc.edit =!pc.edit" class="btn btn-sm glyphicon glyphicon-pencil create"></button>
