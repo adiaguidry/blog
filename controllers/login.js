@@ -39,9 +39,9 @@ app.factory("loginData", function($http){
         $('.login-form, .modal-form')[0].reset();
     };
 
-    loginService.callData = function(userEmail, userPassword){
+    loginService.callData = function(credentials){
 
-        var userData = $.param({email: userEmail, password: userPassword});
+        var userData = $.param({credentials});
 
         return $http({
             url: "php/login_user.php",
@@ -56,8 +56,14 @@ app.factory("loginData", function($http){
     return loginService;
 });
 
-app.controller("modalCtrl", function(registerData, loginData) {
+app.controller("modalCtrl", function($scope, registerData, loginData) {
     var modal = this;
+    $scope.reg = {
+        display_name: '',
+        email: '',
+        password: '',
+        fileToUpload: ''
+    };
 
     modal.userRegister = function(reg){
         registerData.regData(reg).then(function(response){
@@ -80,8 +86,8 @@ app.controller("modalCtrl", function(registerData, loginData) {
 app.service("registerData", function($http,$log){
     var reg = {};
 
-    reg.regData = function(regName, regEmail, regPass, regPic){
-        var userRegData = $.param({display_name: regName, email: regEmail, password: regPass, profilePicture: regPic});
+    reg.regData = function(reg){
+        //var userRegData = $.param({display_name: regName, email: regEmail, password: regPass, profilePicture: regPic});
         //$log.info(regName, regEmail, regPass, regPic);
 
         return $http({
@@ -90,7 +96,7 @@ app.service("registerData", function($http,$log){
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: userRegData
+            data: reg
         });
     };
     return reg;
