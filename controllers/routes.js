@@ -67,9 +67,9 @@ app.controller('profileCtrl', function($http, $log){
 });
 app.factory("getData", function($http){
     var service = {};
-    service.search = function(){
-    var searchData = $.param({ search: keywords})
-    service.callData = function(){
+
+    service.callData = function(keywords){
+        var searchData = $.param({ search: keywords});
         return $http({
             url: "php/get_blog.php",
             method: 'POST',
@@ -79,8 +79,6 @@ app.factory("getData", function($http){
             data: searchData
         });
     };
-};
-
     return service;
 });
 
