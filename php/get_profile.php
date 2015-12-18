@@ -9,6 +9,7 @@ require_once('auth_check.php');
 if(isset($conn)) {
     if (isset($_SESSION['user_id']) && isset($_SESSION['auth_token'])) {
         if (auth_check($conn)) {
+            print_r($_POST['']);
             if (!empty($_POST['uid'])) {
                 $selected_user = sanitize_data($_POST['uid']);
                 $get_info_query = "SELECT lc.ID, bl.id AS `blog_id` ,`username`,`email`,`last login`,`is logged in` FROM `login creds` AS `lc` INNER JOIN `blog list` AS `bl` ON '$selected_user' = bl.User_ID WHERE '$selected_user' = lc.id";
@@ -38,7 +39,7 @@ if(isset($conn)) {
             }
             else {
                 $output['success'] = false;
-                $output['data'][] = '';
+                $output['data'][] = "";
                 $output['errors'] = "You Did not select a user";
                 $error = json_encode($output);
                 print($error);
