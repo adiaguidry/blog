@@ -29,9 +29,9 @@
             <h1 class="title">Blog Tree</h1>
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav side-nav">
+                    <ul data-ng-controller="profileCtrl as pc" class="nav side-nav">
                         <li><a href="#blog">Home</a></li>
-                        <li><a href="#profile">Profile</a></li>
+                        <li><a data-ng-click="pc.profileData()" href="#profile">Profile</a></li>
                         <li><a href="#create">Create</a></li>
                         <li><button class="sign-out" data-ng-click="lc.signOut()">Sign Out</button></li>
 
