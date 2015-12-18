@@ -1,4 +1,4 @@
-<?php
+git pull origin<?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
 require_once('mysql_conn.php');

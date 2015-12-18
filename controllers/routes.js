@@ -22,6 +22,7 @@ app.controller('routeCtrl', function ($routeProvider) {
 
 app.controller('blogCtrl', function (getData, $log) {
     var blog = this;
+
     blog.array = [{
         title: 'Apples',
         summary: "Lorem Ipsum is simply dummy of the printing and typesetting text of is simply dummy text of the printing and typesetting industry."
@@ -50,21 +51,36 @@ app.controller('createCtrl', function($http, $log){
         $log.info(blogTitle);
         var blogData = $.param({title: blogTitle, text: blogArea, tags: blogTags, public: true});
         $http({
+
             url: 'php/create_blog.php',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             method: 'POST',
             data: blogData
         }).then(function(response){
             $log.info('success in create: ', response);
+
         }, function(response){
             $log.error(response);
         })
+
     };
 });
 
 app.controller('profileCtrl', function ($http, $log, getData) {
     var pro = this;
     pro.edit = true;
+
+    //$http({
+    //    url: 'http://s-apis.learningfuze.com/blog/profile.json',
+    //    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    //    method: 'POST'
+    //}).success(function(response){
+    //    $log.info('success for profile; ', response);
+    //    pro.info = response.data;
+    //}).error(function(){
+    //    $log.error('error');
+    //});
+
 
 
         getData.callData()
@@ -75,22 +91,24 @@ app.controller('profileCtrl', function ($http, $log, getData) {
                 $log.info(response);
             });
 
+
 });
 
 app.factory("getData", function ($http) {
     var service = {};
-    var url = "php/get_profile.php";
-    service.callData = function () {
+
+    service.callData = function(keywords){
+        var searchData = $.param({ search: keywords});
+
         return $http({
-            url: url,
+            url: "php/get_blog.php",
             method: 'POST',
-            data:{uid: "5"},
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
-            }
+            },
+            data: searchData
         });
     };
-
     return service;
 });
 

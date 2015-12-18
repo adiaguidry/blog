@@ -2,16 +2,16 @@
 <div data-ng-controller="blogCtrl as bc" class="blog-div">
     <div class="row">
         <div class="col-md-4 col-md-offset-7">
-            <form action="" class="search-form">
+            <form action="php/get_blog.php" method="post" class="search-form" role="form">
                 <div class="form-group has-feedback">
                     <label for="search" class="sr-only">Search</label>
-                    <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="search" data-ng-model="keywords">
+                    <button type="button" class="btn" data-ng-click="bc.search(keywords);"><span class="glyphicon glyphicon-search form-control-feedback"></span></button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="col-md-offset-2 col-md-11">
+    <div class="col-md-offset-2 col-md-10 blog-board">
         <div ng-repeat="blog in bc.array" class="col-md-3 tab-view">
             <h3>{{ blog.title }}</h3>
             <div>
