@@ -1,29 +1,32 @@
-app.controller('loginCtrl', function(loginData){
+app.controller('loginCtrl', function($scope, loginData){
     var login = this;
 
-    login.test = function() {
-        $('.left-div').addClass('left');
-        $('.right-div').addClass('right');
-        $('.move, .under-tree').addClass('right-transition');
-        setTimeout(function(){
-            $('.login-form, .sign-up').addClass('hidden');
-        },650);
-    };
-
+    //
+    //login.test = function() {
+    //    $('.left-div').addClass('left');
+    //    $('.right-div').addClass('right');
+    //    $('.move, .under-tree').addClass('right-transition');
+    //    setTimeout(function(){
+    //        $('.login-form, .sign-up').addClass('hidden');
+    //    },650);
+    //};
+    //
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');
         $('.move, .under-tree').removeClass('right-transition');
+        loginData.clearInput();
         setTimeout(function(){
             $('.login-form, .sign-up').removeClass('hidden');
         },500);
     };
-    login.userLogin = function(userEmail, userPassword) {
-        loginData.callData(userEmail, userPassword).then(function(response) {
+    login.userLogin = function(email, password) {
+        loginData.callData(email, password).then(function(response) {
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
                 $('.move, .under-tree').addClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').addClass('hidden');
                 },650);
@@ -31,18 +34,21 @@ app.controller('loginCtrl', function(loginData){
             else{
                 alert(response.data.errors);
             }
-        //}, function(response){
-        //    alert('Incorrect username or password');
      })
     };
+
 });
 
 app.factory("loginData", function($http){
     var loginService = {};
 
-    loginService.callData = function(userEmail, userPassword){
+    loginService.clearInput = function() {
+        $('.login-form, .modal-form')[0].reset();
+    };
 
-        var userData = $.param({email: userEmail, password: userPassword});
+    loginService.callData = function(email, password){
+
+        var userData = $.param({email: email, password: password});
 
         return $http({
             url: "php/login_user.php",
@@ -57,23 +63,28 @@ app.factory("loginData", function($http){
     return loginService;
 });
 
-app.controller("modalCtrl", function(registerData) {
+app.controller("modalCtrl", function($scope, registerData, loginData) {
     var modal = this;
+    $scope.reg = {
+        display_name: '',
+        email: '',
+        password: '',
+        fileToUpload: ''
+    };
 
-    modal.userRegister = function(regName, regEmail,regPass, regPic, $log){
-        registerData.regData(regName, regEmail,regPass, regPic).then(function(response){
+    modal.userRegister = function(reg){
+        registerData.regData(reg).then(function(response){
             if(response.data.success) {
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
                 $('.move, .under-tree').addClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').addClass('hidden');
                  },650);
-                $log.info(response);
             }
             else{
                 alert('Error: ' + response.data.errors);
-                $log.info(response.data.errors);
             }
         })
     };
@@ -82,9 +93,9 @@ app.controller("modalCtrl", function(registerData) {
 app.service("registerData", function($http,$log){
     var reg = {};
 
-    reg.regData = function(regName, regEmail, regPass, regPic){
+    reg.regData = function(regName, regEmail, regPass){
         var userRegData = $.param({display_name: regName, email: regEmail, password: regPass, profilePicture: regPic});
-        $log.info(regName, regEmail, regPass, regPic);
+        //$log.info(regName, regEmail, regPass, regPic);
 
         return $http({
             url: "php/register_user.php",
@@ -92,13 +103,13 @@ app.service("registerData", function($http,$log){
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: userRegData
+            data: regData
         });
     };
     return reg;
 });
 
-app.controller("logoutCtrl", function($http, $log){
+app.controller("logoutCtrl", function($http, loginData){
     var logout = this;
 
     logout.signOut = function() {
@@ -114,14 +125,13 @@ app.controller("logoutCtrl", function($http, $log){
                 $('.left-div').removeClass('left');
                 $('.right-div').removeClass('right');
                 $('.move, .under-tree').removeClass('right-transition');
+                loginData.clearInput();
                 setTimeout(function(){
                     $('.login-form, .sign-up').removeClass('hidden');
                 },500);
-                $log.info('hello' + response);
             }
             else{
                 alert('Error: ' + response.data.errors);
-                $log.info('bad' + response);
             }
         })
     };
