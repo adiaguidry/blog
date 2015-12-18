@@ -9,13 +9,13 @@
             <div class="col-md-6 profile_data">
 
                 <div class="form-group col-lg-6">
-                    <h2>{{ pc.info.name }}</h2>
+                    <h2>{{ pc.data.name }}</h2>
                     <input data-ng-hide="pc.edit" type="text" name="username" class="form-control" value="">
-                    <h2>{{ pc.info.email }}</h2>
+                    <h2>{{ pc.data.email }}</h2>
                     <input data-ng-hide="pc.edit" type="text" name="email" class="form-control" value="">
-                    <h2>I <i class="fa fa-heart-o"></i> Blog Tree</h2>
-                    <h2>My Blogs: {{ pc.info.recent_posts.length }}</h2>
-                    <button data-ng-click="pc.edit =!pc.edit" class="btn btn-sm glyphicon glyphicon-pencil create"></button>
+                    <h2>I <i class="fa fa-heart-o"></i> Blog Tree </h2>
+                    <h2>My Blogs: {{ pc.recent_posts.length }}</h2>
+                    <button data-ng-click="pc.profileData()" class="btn btn-sm glyphicon glyphicon-pencil create"></button>
 
                     <button data-ng-show="!pc.edit" class="btn btn-sm create">submit</button>
                 </div>

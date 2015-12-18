@@ -43,36 +43,37 @@ app.controller('blogCtrl', function (getData, $log) {
             $log.info(response);
         });
 });
-app.controller('createCtrl', function ($http, $log) {
-    var blog = this;
-    blog.creatBlog = function () {
-        var enrty = $.param({
-            title: 'title',
-            summary: 'summary'
-        });
+app.controller('createCtrl', function($http, $log){
+    var create = this;
+
+    create.createBlog = function(blogTitle, blogArea, blogTags){
+        $log.info(blogTitle);
+        var blogData = $.param({title: blogTitle, text: blogArea, tags: blogTags, public: true});
+        $http({
+            url: 'php/create_blog.php',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            method: 'POST',
+            data: blogData
+        }).then(function(response){
+            $log.info('success in create: ', response);
+        }, function(response){
+            $log.error(response);
+        })
     };
-    $http({
-        url: 'http://s-apis.learningfuze.com/blog/create.json',
-        header: {'Content-Type': 'application/x-www-form-urlencoded'},
-        method: 'POST'
-    }).success(function (response) {
-        $log.info('success in create: ', response);
-    }).error(function () {
-        $log.error('error');
-    })
 });
+
 app.controller('profileCtrl', function ($http, $log, getData) {
     var pro = this;
     pro.edit = true;
 
-    pro.profileData = function () {
+
         getData.callData()
             .then(function (response) {
-                $log.info("the profile: ", response);
+               pro.data = response.data.data;
+                $log.info("the profile: this one", pro.data);
             }, function (response) {
                 $log.info(response);
             });
-    };
 
 });
 
@@ -83,7 +84,7 @@ app.factory("getData", function ($http) {
         return $http({
             url: url,
             method: 'POST',
-            data:{uid: 5},
+            data:{uid: "5"},
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -92,5 +93,6 @@ app.factory("getData", function ($http) {
 
     return service;
 });
+
 
 

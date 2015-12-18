@@ -1,6 +1,5 @@
 app.controller('loginCtrl', function(loginData){
     var login = this;
-    var loginId = '';
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');
@@ -12,7 +11,6 @@ app.controller('loginCtrl', function(loginData){
     login.userLogin = function(userEmail, userPassword) {
         loginData.callData(userEmail, userPassword).then(function(response) {
             if(response.data.success) {
-                loginId = response.data.uid;
                 $('.left-div').addClass('left');
                 $('.right-div').addClass('right');
                 $('.move, .under-tree').addClass('right-transition');

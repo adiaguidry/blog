@@ -17,13 +17,13 @@ else{
         if(!isset($_POST['public'])){
             $_POST['public'] = false;
         }
-        if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['tags'])){
+        if(isset($_POST['title']) && isset($_POST['text'])){
             $title = sanitize_data($_POST['title']);
             $text = sanitize_data($_POST['text']);
             $tags = sanitize_data($_POST['tags']);
             $public = sanitize_data($_POST['public']);
             $uid = $_SESSION['user_id'];
-            $create_blog_query = "INSERT INTO `blog list`(`title`,`text`,`user_ID`,`Date Created`,`Last Edited`,`tags`,`public`) VALUES('$title','$text','$uid',UNIX_TIMESTAMP(),UNIX_TIMESTAMP(),'$tags','$public')";
+            $create_blog_query = "INSERT INTO `blog list`(`title`,`text`,`user_ID`,`Date Created`,`Last Edited`,`public`) VALUES('$title','$text','$uid',UNIX_TIMESTAMP(),UNIX_TIMESTAMP(),'$public')";
             $create_blog = mysqli_query($conn,$create_blog_query);
             if(mysqli_affected_rows($conn) > 0){
                 $blog_id = mysqli_insert_id($conn);
@@ -36,8 +36,16 @@ else{
                         $output['data']['ts'] = $ts;
                     }
                 }
+                else{
+                    $output['success'] = false;
+                    $output['data'][] = '';
+                    $output['error'] = "Failed to make stamp";
+                    $error = json_encode($output);
+                    print($error);
+                }
                 $success = json_encode($output);
                 print($success);
+
             }
             else{
                 $output['success'] = false;
@@ -46,6 +54,13 @@ else{
                 $error = json_encode($output);
                 print($error);
             }
+        }
+        else{
+            $output['success'] = false;
+            $output['data'][] = '';
+            $output['error'] = "Empty Fields";
+            $error = json_encode($output);
+            print($error);
         }
     }
     else{
