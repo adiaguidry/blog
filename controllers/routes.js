@@ -1,6 +1,7 @@
 app.controller('routeCtrl', function ($routeProvider) {
 
 })
+<<<<<<< HEAD
     .config(function ($routeProvider) {
         $routeProvider
             .when('/blog', {
@@ -20,6 +21,23 @@ app.controller('routeCtrl', function ($routeProvider) {
         //    }
         //);
     });
+=======
+.config(function($routeProvider){
+    $routeProvider
+        .when('/blog',{
+            templateUrl: 'pages/blog.html',
+            controller: 'blogCtrl'
+        })
+        .when('/profile',{
+            templateUrl: 'pages/profile.html',
+            controller: 'profileCtrl'
+        })
+        .when('/create',{
+            templateUrl: 'pages/create.html',
+            controller: 'createCtrl'
+        });
+});
+>>>>>>> 77f9819341ef984b17588278d622b62c91757955
 
 app.controller('blogCtrl', function (getData, $log) {
     var blog = this;
@@ -94,6 +112,9 @@ app.factory("getData", function ($http) {
     return service;
 });
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 77f9819341ef984b17588278d622b62c91757955

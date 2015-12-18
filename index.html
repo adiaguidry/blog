@@ -22,7 +22,7 @@
 <div class="container-fluid container-main" data-ng-controller="loginCtrl as lc">
 
 
-    <div class="divnav">
+    <div class="divnav" data-ng-controller="logoutCtrl as lg">
 
         <nav class="nav nav-pills nav-stacked col-xs-1">
             <img src="images/tree-logo.png" alt="tree logo" class="login-logo small">
@@ -33,7 +33,7 @@
                         <li><a href="#blog">Home</a></li>
                         <li><a data-ng-click="pc.profileData()" href="#profile">Profile</a></li>
                         <li><a href="#create">Create</a></li>
-                        <li><button class="sign-out" data-ng-click="lc.signOut()">Sign Out</button></li>
+                        <li><button type="button" class="sign-out" data-ng-click="lg.signOut()">Sign Out</button></li>
 
                     </ul>
                 </div>
@@ -76,7 +76,11 @@
                 <div class="modal-body">
 
                     <!-- content goes here -->
-                    <form role="form" method="POST" action="">
+                    <form role="form" method="POST" action="php/register_user.php">
+                        <div class="form-group">
+                            <label for="inputName1">Username</label>
+                            <input type="text" class="form-control" id="inputName1" data-ng-model="regName" placeholder="Enter username">
+                        </div>
                         <div class="form-group">
                             <label for="inputEmail1">Email address</label>
                             <input type="email" class="form-control" id="inputEmail1" data-ng-model="regEmail"
@@ -104,7 +108,7 @@
                         </div>
 
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" data-ng-click="mc.userRegister(regEmail,regPass,regPic)">Submit</button>
+                            <button type="button" class="btn btn-default" data-ng-click="mc.userRegister(regName, regEmail,regPass,regPic)" data-dismiss="modal">Submit</button>
                         </div>
                     </div>
                 </div>
