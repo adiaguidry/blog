@@ -11,6 +11,7 @@ app.controller('loginCtrl', function($scope, loginData){
     //    },650);
     //};
     //
+
     login.signOut = function() {
         $('.left-div').removeClass('left');
         $('.right-div').removeClass('right');
